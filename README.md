@@ -15,7 +15,7 @@ https://docs.docker.com/desktop/setup/install/mac-install
 
 
 ## Install kubectl
-Included with Docker Desktop, otherwise  
+Included with Docker Desktop, otherwise:  
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux  
 
 ## Install the cnpg plugin for kubectl
@@ -110,7 +110,7 @@ Check the cluster:
 kubectl get cluster cluster-example
 ```
 
-Check the status of the cluster with the cnpg plugin
+Check the status of the cluster with the cnpg plugin:
 ```bash
 kubectl cnpg status cluster-example
 ```
@@ -158,21 +158,15 @@ Get the admin password:
 ```bash
 argocd admin initial-password -n argocd
 # or
-kubectl get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 --decode && echo
+kubectl get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' -n argocd | base64 --decode && echo
 ```
 
 The API server and UI can then be accessed using https://localhost:8080 with username admin and the password from above.
 
-Optional: Login Using The CLI¶
-
-```bash
-argocd login https://localhost:8080 
-```
-
 ## Create and Sync an ArgoCD App
 Create an simple app: 
 ```bash
-kubectl apply -f ./argocd-apps/cnpg.yaml
+kubectl apply -f ./argocd-app/cnpg.yaml
 ```
 The ArgoCD application should be now visible in the UI, but without the CNPG cluster. The cluster will be deployed with the first sync.
 By default the automated sync is turned off. Use the "automated" attribute under syncPolicy to turn it on.
@@ -181,6 +175,7 @@ Sync the manifest of the cluster manually:
   - Push "Sync" in the UI.
   - Sync from local manifests directly, only for development purposes:
 ```bash
+argocd login https://localhost:8080 
 argocd app sync cnpg --local ./argocd-apps/cnpg.yml
 ```
 ## Test serviceTemplate with LoadBalancer 
