@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  source:
+    path: argocd-sync
+    repoURL: https://github.com/proventa/cloudnativepg-with-gitops.git
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
