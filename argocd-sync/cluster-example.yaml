@@ -3,18 +3,8 @@ kind: Cluster
 metadata:
   name: cluster-example
 spec:
-  instances: 3
+  instances: 2
 
   storage:
     size: 1Gi
 
-  managed:
-    services:
-      disabledDefaultServices: ["ro", "r"]
-      additional:
-      - selectorType: rw
-        serviceTemplate:
-          metadata:
-            name: cluster-example-rw-lb
-          spec:
-            type: LoadBalancer
