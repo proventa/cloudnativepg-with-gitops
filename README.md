@@ -126,6 +126,11 @@ kubectl get pvc
 # Secrets
 kubectl get secret
 ```
+Delete the cluster:
+
+```bash
+kubectl delete cluster cluster-example
+```
 
 ## Install ArgoCD and Argo CD CLI
 https://argo-cd.readthedocs.io/en/latest/getting_started/
