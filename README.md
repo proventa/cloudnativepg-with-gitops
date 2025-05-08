@@ -6,13 +6,7 @@ It is based on the official documentation of CloudNativePG and ArgoCD, as well a
 > ⚠️ Please note that this is intended for experimental evaluation and should not be used in a production setting.
 
 ## Install Docker 
-### Docker on Linux
-https://docs.docker.com/engine/install
-### Docker Desktop on Windows with WSL 2
-https://docs.docker.com/desktop/setup/install/windows-install
-### Docker Desktop on Mac
-https://docs.docker.com/desktop/setup/install/mac-install
-
+https://docs.docker.com/get-started/get-docker
 
 ## Install kubectl
 Included with Docker Desktop, otherwise:  
